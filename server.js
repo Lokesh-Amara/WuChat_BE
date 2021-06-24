@@ -1,13 +1,14 @@
 const Express = require("express");
 const dotenv = require("dotenv");
+const app = Express();
+app.use(Express.json());
 dotenv.config();
 const port = process.env.PORT || 3001;
 const io = require("socket.io")(port, {
   cors: {},
 });
 
-const app = Express();
-app.use(Express.json());
+
 
 const users = {};
 
