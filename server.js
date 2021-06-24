@@ -43,3 +43,8 @@ io.on("connection", (socket) => {
     delete users[socket.id];
   });
 });
+
+app.listen(port, () => {
+  console.log(`::::  Server started and running on port ${port} ::::`);
+});
+
