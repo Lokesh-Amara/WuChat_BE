@@ -1,13 +1,15 @@
-const Express = require("express");
+const express = require("express");
+const app = express();
+const http = require("http");
+const server = http.createServer(app);
+
 const dotenv = require("dotenv");
-const app = Express();
-app.use(Express.json());
 dotenv.config();
+
 const port = process.env.PORT || 3001;
-const io = require("socket.io")(port, {
+const io = require("socket.io")(server, {
   cors: {},
 });
-
 
 
 const users = {};
@@ -44,7 +46,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`::::  Server started and running on port ${port} ::::`);
 });
 
