@@ -1,9 +1,13 @@
+const Express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 const port = process.env.PORT || 3001;
 const io = require("socket.io")(port, {
   cors: {},
 });
+
+const app = Express();
+app.use(Express.json());
 
 const users = {};
 
